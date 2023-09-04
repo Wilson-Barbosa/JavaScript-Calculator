@@ -1,0 +1,8 @@
+Como o código funciona:
+
+
+1. O usuário dá um clique em um botão e o seu textContent é capturado e guardado numa variável chamada user_Input.
+
+2. Depois user_Input é passado (push) para um array chamado array_Expression.
+
+3. O array é transformado em 
