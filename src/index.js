@@ -1,16 +1,53 @@
 //variables
 let array_Expression = [];
+let final_Expression;
 let user_Input;
 let screenContainer = document.getElementById('output-text');
 
 
 
 
-//function that clears the screen
 
-function clearScreen(){
-    screenContainer.textContent = '';
+
+
+
+
+
+
+//function that deletes a single character a time:
+function deleteChar(){
+    array_Expression.pop();
+    screenContainer.textContent = array_Expression.join('');
 }
+
+document.getElementById('delete-char').addEventListener('click', deleteChar);
+
+
+
+
+
+
+
+
+
+
+//function that clears the entire screen
+function clearScreen(){
+        array_Expression = [];
+        
+        screenContainer.textContent = array_Expression.join('');
+}
+
+document.getElementById('clear-screen').addEventListener('click', clearScreen);
+
+
+
+
+
+
+
+
+
 
 
 
@@ -18,7 +55,7 @@ function clearScreen(){
 //This function will be called when the = button is clicked
 function calculate(){
 
-    //parses the array into a string
+    //parses the array to a string
     final_Expression = array_Expression.join('');
 
     //generates the result
@@ -33,7 +70,21 @@ document.getElementById('equal-sign').addEventListener('click', calculate);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 //this function will be called when a number or operator is clicked
+//it also limits the amount of characters the user can print in the window
 function createExpression(input){
 
     //pushes the input to the array
@@ -41,7 +92,27 @@ function createExpression(input){
 
     //updates the value in the screen
     screenContainer.textContent = array_Expression.join('');
+
+    //18 ccharacters at max
+    if (array_Expression.length > 17){
+        array_Expression.pop();
+        screenContainer.textContent = array_Expression.join('')
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -51,6 +122,11 @@ function createExpression(input){
 
 //The following lines of code are for each of the button clicks
 
+
+
+
+
+/* ----------------------NUMBERS----------------------*/
 function zero(){
     createExpression(0);
 }
@@ -118,7 +194,16 @@ function nine(){
 }
 document.getElementById('nine').addEventListener('click', nine);
 
-/* ----------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* ----------------------BASIC OPERATIONS----------------------*/
 
 function add(){
     createExpression('+');
@@ -145,3 +230,31 @@ function divide(){
     createExpression('/');
 }
 document.getElementById('division-sign').addEventListener('click', divide);
+
+
+
+
+
+
+
+
+
+
+/* ----------------------SPECIAL CHARACTERS----------------------*/
+
+function openParenth(){
+    createExpression('(');
+}
+document.getElementById('open-parenth').addEventListener('click', openParenth);
+
+
+function closeParenth(){
+    createExpression(')');
+}
+document.getElementById('close-parenth').addEventListener('click', closeParenth);
+
+
+function dot(){
+    createExpression('.');
+}
+document.getElementById('dot').addEventListener('click', dot);
