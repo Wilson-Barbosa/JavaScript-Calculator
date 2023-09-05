@@ -38,7 +38,7 @@ function clearScreen(){
         screenContainer.textContent = array_Expression.join('');
 }
 
-document.getElementById('clear-screen').addEventListener('click', clearScreen);
+document.getElementById('clearAll').addEventListener('click', clearScreen);
 
 
 
@@ -61,13 +61,12 @@ function calculate(){
     //generates the result
     const result = eval(final_Expression);
 
-    //sends the result to the screen
+    //sends the result to the screen, clears the array and pushes the value so the user can immediately add more inputs to the result
     screenContainer.textContent = result;
+    array_Expression = [];
+    array_Expression.push(result);
 }
 document.getElementById('equal-sign').addEventListener('click', calculate);
-
-
-
 
 
 
@@ -93,16 +92,13 @@ function createExpression(input){
     //updates the value in the screen
     screenContainer.textContent = array_Expression.join('');
 
-    //18 ccharacters at max
+    //with this i can limit the amount of characters that go inside the screen by imediately deleting the input the user just added
     if (array_Expression.length > 17){
         array_Expression.pop();
         screenContainer.textContent = array_Expression.join('')
     }
 
 }
-
-
-
 
 
 
